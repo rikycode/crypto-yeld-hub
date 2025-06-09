@@ -1,0 +1,35 @@
+<div class="login-container">
+  <h2>Sign up</h2>
+
+  <form (ngSubmit)="signup()" class="login-form">
+    <input
+      type="email"
+      placeholder="Email"
+      [(ngModel)]="email"
+      name="email"
+      required
+      autocomplete="username"
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password"
+      name="password"
+      required
+      autocomplete="current-password"
+    />
+
+    <button type="submit" [disabled]="isLoading">Sign up</button>
+  </form>
+
+  <button class="google-btn" (click)="loginGoogle()" [disabled]="isLoading">
+    Accedi con Google
+  </button>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <p class="signup-text">
+   Hai già un account?
+    <a routerLink="/login">Accedi</a>
+  </p>
+</div>

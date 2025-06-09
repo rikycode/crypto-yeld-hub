@@ -1,0 +1,88 @@
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  font-family: 'Inter', sans-serif;
+}
+
+/* SIDEBAR */
+aside {
+  width: 240px;
+  background: linear-gradient(180deg, #3f51b5, #1a237e);
+  padding: 1rem;
+  transition: width 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+aside.closed {
+  width: 60px;
+}
+
+aside .toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+aside .toggle-btn:hover {
+  transform: rotate(90deg);
+}
+
+aside nav {
+  margin-top: 1rem;
+}
+
+aside nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+aside nav li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #e3f2fd;
+  font-size: 0.95rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+aside nav li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+aside nav li.active {
+  background-color: #fff;
+  color: #1a237e;
+  font-weight: bold;
+}
+
+aside nav li span.material-icons {
+  font-size: 20px;
+}
+
+/* MAIN */
+main {
+  flex: 1;
+  padding: 2rem;
+  background-color: #ffffff;
+  transition: background 0.3s ease;
+}
+
+/* Responsive collapsible sidebar */
+aside.closed nav {
+  display: none;
+}

@@ -1,0 +1,19 @@
+<nav class="navbar" [class.open]="menuOpen">
+  <div class="navbar__brand">
+    <a routerLink="/" class="navbar__logo">
+      <span class="icon">₿</span> CryptoYieldHub
+    </a>
+    <button class="navbar__toggle" (click)="toggleMenu()" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <ul class="navbar__links">
+    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="toggleMenu()">Home</a></li>
+    <li><a routerLink="/dashboard" routerLinkActive="active" (click)="toggleMenu()">Dashboard</a></li>
+    <li><a routerLink="/explore" routerLinkActive="active" (click)="toggleMenu()">Esplora</a></li>
+    <li><a routerLink="/login" routerLinkActive="active" (click)="toggleMenu()">Login</a></li>
+  </ul>
+</nav>

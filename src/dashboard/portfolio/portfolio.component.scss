@@ -1,0 +1,271 @@
+.portfolio-container {
+  padding: 1.5rem;
+  background: #f5f7fa;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  color: #1a237e;
+  font-family: 'Inter', sans-serif;
+}
+
+.total-balance {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #2e7d32;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a237e;
+  font-family: 'Inter', sans-serif;
+}
+
+
+.section-title-azure {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a4c7e;
+  font-family: 'Inter', sans-serif;
+}
+
+.portfolio-section {
+  margin-top: 1.5rem;
+}
+
+.chain-summary,
+.token-summary {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.token-summary img {
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.token-list.scrollable {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 0.5rem;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: #1a237e;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.total-fiat {
+  font-size: 1.2em;
+  margin-top: 0.5em;
+  color: #2e7d32;
+}
+
+
+.chart-legend-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  align-items: flex-start; // o center se vuoi allineare i grafici al centro
+}
+
+
+.chart-legend-container.alternate {
+  flex-direction: row-reverse;
+}
+
+.chart-wrapper {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+}
+
+.legend-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f9fafb;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    border-radius: 9999px;
+  }
+
+  span {
+    flex: 1;
+    font-weight: 500;
+    color: #374151;
+  }
+
+  strong {
+    font-weight: 600;
+    color: #111827;
+    white-space: nowrap;
+  }
+}
+
+
+.custom-select-container {
+  position: relative;
+  width: 120px;
+  font-family: 'Inter', sans-serif;
+  user-select: none;
+  margin-bottom: 20px;
+}
+
+.custom-select {
+  background: #f0f2f5;
+  border: 1px solid #ccc;
+  border-radius: 9999px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  color: #333;
+
+  &:hover {
+    background-color: #e5e7eb;
+    border-color: #999;
+  }
+
+  .chevron {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+  }
+}
+
+.custom-select-options {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+
+  li {
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+    &.active {
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+
+
+.performance-container {
+  padding: 1rem;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.section-title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #1a237e;
+}
+
+.performance-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: #ddd;
+}
+
+.performance-card {
+  flex: 1 1 200px;
+  background-color: #1e1e2f;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px #00000044;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+}
+
+.performance-card:hover {
+  transform: scale(1.03);
+}
+
+.performance-card.positive {
+  border-left: 4px solid #00e676;
+}
+
+.performance-card.negative {
+  border-left: 4px solid #ff1744;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-body .symbol {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.card-body .percent {
+  font-size: 1.1rem;
+  margin: 0.3rem 0;
+}
+
+.card-body .price {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.icon {
+  font-size: 20px;
+  vertical-align: middle;
+}

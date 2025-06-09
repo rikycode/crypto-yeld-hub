@@ -1,27 +1,127 @@
-# CryptoYieldHub
+# CryptoYeldHub
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+**CryptoYeldHub** is a modern cryptocurrency portfolio tracker and yield optimizer. It allows users to connect multiple wallets, analyze their holdings across different blockchains, and explore yield farming opportunities using real-time analytics and AI-powered suggestions.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🔧 Installation Guide
 
-## Code scaffolding
+### 1. Prerequisites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Ensure you have the following installed:
 
-## Build
+- **Node.js** (v18 or newer): https://nodejs.org
+- **Angular CLI**: Run the following command:
+  ```bash
+  npm install -g @angular/cli
+  ```
+- **Firebase CLI** (for deployment & testing):
+  ```bash
+  npm install -g firebase-tools
+  ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+### 2. Project Setup
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/cryptoyeldhub.git
+   cd cryptoyeldhub
+   ```
 
-## Running end-to-end tests
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. **Run the Angular app locally**:
+   ```bash
+   ng serve
+   ```
 
-## Further help
+4. Navigate to `http://localhost:4200/` to use the app locally.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+## 🔐 Authentication & Backend
+
+The project uses **Firebase** for:
+- User Authentication (Google or Email/Password)
+- Firestore Database for storing and syncing user data
+
+> Configure your Firebase credentials in `src/environments/environment.ts`
+
+---
+
+## 🌐 API Service (via Render)
+
+All pricing and analytics data are served through a REST API hosted on **Render**:
+
+- **Base URL**: `https://crypto-price-api-h8vd.onrender.com`
+
+All available endpoints are documented here:
+👉 [Postman Public API Docs](https://www.postman.com/riccardovazzoler-1524191/cryptoyeldhub/collection/63effq3/cryptoyeldhub-api-test?action=share&creator=45713837)
+
+---
+
+## 🧠 Project Overview
+
+**CryptoYeldHub** is designed to help investors optimize their crypto portfolio by combining:
+
+- **Live token prices** from CoinMarketCap via proxy API
+- **Portfolio aggregation** across multiple blockchains (EVM & Bitcoin supported)
+- **Performance metrics** and historical returns
+- **AI-generated suggestions** for farming and staking
+- **Telegram & Email Alerts** (coming soon)
+
+---
+
+## 🖼️ Application Architecture
+
+### Frontend: Angular
+
+- Modular structure with core services (`WalletVerifierService`, `TokenService`, `PriceFetcherService`, etc.)
+- Components include:
+  - `wallet-overview`
+  - `portfolio`
+  - `performance-chart`
+  - `suggestions`
+- Integration with Chart.js, Inter font, Tailwind-inspired styling
+
+### Backend: Firebase + Render
+
+- **Firebase**: handles user data, login, and Firestore storage
+- **Render**: hosts a Node.js proxy API for CoinMarketCap (price and token data) to bypass CORS limitations
+
+---
+
+## 🏗️ Core Functionality
+
+- ✅ Multi-wallet support (EVM & Bitcoin)
+- ✅ Live fiat conversion (USD / EUR)
+- ✅ Clean and intuitive dashboard
+- ✅ Real-time analytics
+- 🔜 Alerts and notifications
+- 🔜 Social/trending insights
+
+---
+
+## 🧑‍💼 About the Project
+
+Built and maintained by **Adventica**, a digital innovation company focused on financial software and AI-driven platforms.
+
+---
+
+## 📄 License
+
+This project is open-source under the [MIT License](LICENSE).
+
+---
+
+## 📫 Contact
+
+For questions, contributions, or feature requests:
+
+- Email: info@adventica.io
+- GitHub Issues: [Open a ticket](https://github.com/YOUR-USERNAME/cryptoyeldhub/issues)

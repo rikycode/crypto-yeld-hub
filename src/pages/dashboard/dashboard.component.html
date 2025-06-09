@@ -1,0 +1,55 @@
+<div class="dashboard-container">
+  <aside [class.closed]="menuClosed">
+    <button class="toggle-btn" (click)="menuClosed = !menuClosed">
+      <span class="material-icons">menu</span>
+    </button>
+
+    <nav *ngIf="!menuClosed">
+      <ul>
+        <li
+          [class.active]="activeSection === 'wallet'"
+          (click)="selectSection('wallet')"
+        >
+          <span class="material-icons">account_balance_wallet</span>
+          Wallet
+        </li>
+        <li
+          [class.active]="activeSection === 'performance'"
+          (click)="selectSection('performance')"
+        >
+          <span class="material-icons">show_chart</span>
+          Performance
+        </li>
+        <li
+          [class.active]="activeSection === 'portfolio'"
+          (click)="selectSection('portfolio')"
+        >
+          <span class="material-icons">pie_chart</span>
+          Portfolio
+        </li>
+        <li
+          [class.active]="activeSection === 'suggestions'"
+          (click)="selectSection('suggestions')"
+        >
+          <span class="material-icons">insights</span>
+          Suggerimenti
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+    <app-wallet-overview
+      [walletDataDto]="walletDataDto"
+      *ngIf="activeSection === 'wallet'"
+    ></app-wallet-overview>
+    <app-performance-chart
+      *ngIf="activeSection === 'performance'"
+    ></app-performance-chart>
+    <app-portfolio
+      [walletDataDto]="walletDataDto"
+      *ngIf="activeSection === 'portfolio'"
+    ></app-portfolio>
+    <app-suggestions *ngIf="activeSection === 'suggestions'"></app-suggestions>
+  </main>
+</div>

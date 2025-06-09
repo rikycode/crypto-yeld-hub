@@ -1,0 +1,39 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form (ngSubmit)="loginEmail()" class="login-form">
+    <input
+      type="email"
+      placeholder="Email"
+      [(ngModel)]="email"
+      name="email"
+      required
+      autocomplete="username"
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password"
+      name="password"
+      required
+      autocomplete="current-password"
+    />
+
+    <button type="submit" [disabled]="isLoading">Accedi</button>
+  </form>
+
+  <button class="google-btn" (click)="loginGoogle()" [disabled]="isLoading">
+    Accedi con Google
+  </button>
+
+  <button class="reset-btn" (click)="resetPassword()" [disabled]="isLoading">
+    Recupera Password
+  </button>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <p class="signup-text">
+    Non sei ancora registrato?
+    <a routerLink="/signup">Registrati</a>
+  </p>
+</div>

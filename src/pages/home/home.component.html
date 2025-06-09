@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+
+<main class="main-container">
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Benvenuto su CryptoYieldHub</h1>
+    <p>
+      La dashboard che ti guida nelle migliori criptovalute con reddito passivo.
+    </p>
+    <a routerLink="/dashboard" class="btn-primary">Inizia Ora</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>Funzionalità principali</h2>
+    <ul>
+      <li>Monitoraggio portfolio multi-wallet</li>
+      <li>Scelta delle migliori crypto con potenziale reddito passivo</li>
+      <li>Analisi in tempo reale dei trend di mercato</li>
+      <li>Consigli personalizzati basati su dati e algoritmi avanzati</li>
+    </ul>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h2>Come funziona</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="number">1</div>
+        <p>Collega i tuoi wallet per un monitoraggio centralizzato</p>
+      </div>
+      <div class="step">
+        <div class="number">2</div>
+        <p>Ricevi analisi e suggerimenti sulle migliori crypto per reddito passivo</p>
+      </div>
+      <div class="step">
+        <div class="number">3</div>
+        <p>Investi con consapevolezza e segui il tuo rendimento</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <h2>Statistiche in tempo reale</h2>
+    <div class="stats-cards">
+      <div class="stat-card" *ngFor="let stat of stats">
+        <div class="stat-number">{{ stat.value }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="news">
+    <h2>Ultime notizie dal mondo crypto</h2>
+    <p class="placeholder">Feed news in sviluppo... restate sintonizzati!</p>
+  </section>
+</main>
+
+<app-footer></app-footer>

@@ -1,0 +1,66 @@
+<div class="wallet-container">
+  <h2>Aggiungi Wallet</h2>
+
+  <br>
+  <form class="wallet-form" (submit)="addWallet()">
+    <input
+      type="text"
+      placeholder="Inserisci indirizzo wallet"
+      [(ngModel)]="walletAddress"
+      name="walletAddress"
+      required
+    />
+    <button type="submit">Verifica e Salva</button>
+  </form>
+
+  <div class="wallet-list" *ngIf="walletDataDto.length > 0">
+    <h3>Wallet Salvati</h3>
+
+    <ng-container *ngFor="let wallet of walletDataDto">
+      <div class="wallet-card">
+        <div class="wallet-header" (click)="toggleExpand(wallet.address)">
+          <p class="wallet-address">
+            <strong>Indirizzo:</strong> {{ wallet.address }}
+          </p>
+          <!-- Nel toggle -->
+          <button class="toggle-btn">
+            <span class="material-icons toggle-icon">
+              {{
+                expandedWallets.has(wallet.address)
+                  ? "expand_less"
+                  : "expand_more"
+              }}
+            </span>
+          </button>
+        </div>
+
+        <div class="wallet-chains" *ngIf="expandedWallets.has(wallet.address)">
+          <div class="chain-item" *ngFor="let chain of wallet.chains">
+            <div class="chain-info">
+              <p><strong>Chain:</strong> {{ chain.chainId }}</p>
+              <p>
+                <strong>Saldo:</strong> {{ chain.balance | number : "1.2-6" }}
+              </p>
+            </div>
+
+            <div class="token-list" *ngIf="chain.tokens.length > 0">
+              <h4>Token:</h4>
+              <div class="token-item" *ngFor="let token of chain.tokens">
+                <img
+                  [src]="token.logo || 'assets/default-token.png'"
+                  alt="logo"
+                  width="20"
+                  height="20"
+                />
+                <span>{{ token.name || token.symbol }}:</span>
+                <span>{{ token.balance | number : "1.4-8" }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="remove-btn" (click)="deleteWallet(wallet.address)">Rimuovi Wallet</button>
+      </div>
+    </ng-container>
+  </div>
+</div>

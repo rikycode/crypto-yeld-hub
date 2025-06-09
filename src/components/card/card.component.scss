@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.01);
+    background-color: #2a2a2a;
+  }
+}

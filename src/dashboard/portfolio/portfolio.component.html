@@ -1,0 +1,210 @@
+<div class="portfolio-container">
+  <h2 class="section-title">Il tuo Portafoglio Totale</h2>
+
+  <div class="custom-select-container">
+    <div class="custom-select" (click)="toggleDropdown()">
+      <span>{{ fiat }}</span>
+      <svg
+        class="chevron"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path d="M6 9l6 6 6-6" />
+      </svg>
+    </div>
+    <ul *ngIf="dropdownOpen" class="custom-select-options">
+      <li
+        *ngFor="let currency of supportedFiats"
+        (click)="selectFiat(currency)"
+        [class.active]="fiat === currency"
+      >
+        {{ currency }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="section-title-azure">
+    {{ totalBalance | number : "1.2-8" }}
+    <small>(somma di tutti i wallet)</small>
+  </div>
+
+  <div class="section-title-azure">
+    ≈ {{ totalBalanceFiat | number : "1.2-2" }} {{ fiat }}
+    <small>(valore stimato in valuta fiat)</small>
+  </div>
+
+  
+  <div class="portfolio-section">
+    <h2 class="section-title">Totale per Chain</h2>
+    <div class="chain-summary" *ngFor="let chain of totalByChain">
+      <strong>{{ chain.chainId }}</strong
+      >:
+      {{ chain.totalBalance | number : "1.4-8" }}
+    </div>
+  </div>
+
+  <div class="portfolio-section">
+    <h2 class="section-title">Totale per Token</h2>
+
+    <div class="token-list" [class.scrollable]="totalTokens.length > 5">
+      <div
+        class="token-summary"
+        *ngFor="
+          let token of totalTokens
+            | slice : 0 : (showAllTokens ? totalTokens.length : 5)
+        "
+      >
+        <img
+          [src]="token.logo || 'assets/default-token.png'"
+          alt="logo"
+          width="20"
+          height="20"
+        />
+        <strong>{{ token.symbol }}</strong
+        >:
+        {{ token.balance | number : "1.4-8" }}
+      </div>
+    </div>
+
+    <button
+      class="toggle-button"
+      *ngIf="totalTokens.length > 5"
+      (click)="toggleShowAll()"
+    >
+      <span class="material-icons">
+        {{ showAllTokens ? "expand_less" : "expand_more" }}
+      </span>
+      {{ showAllTokens ? "Nascondi" : "Mostra Tutti" }}
+    </button>
+  </div>
+
+  <div class="performance-container" *ngIf="tokenPerformanceSummary">
+    <h2 class="section-title">Best Performers</h2>
+    <div class="performance-cards">
+      <div
+        class="performance-card positive"
+        *ngFor="let timeframe of ['24h', '7d', '30d', '60d', '90d']"
+      >
+        <div class="card-header">
+          <span class="material-icons icon">trending_up</span>
+          <span class="timeframe">{{ timeframe }}</span>
+        </div>
+        <div class="card-body">
+          <div class="symbol">
+            {{ tokenPerformanceSummary!.bestPerformers[timeframe]?.symbol }}
+          </div>
+          <div class="percent">
+            {{tokenPerformanceSummary!.bestPerformers[timeframe]?.[timeframeKeyMap[timeframe]]| number: '1.2-2'
+            }}%
+          </div>
+
+          <div class="price">
+            Price: {{ fiat }}&nbsp; {{
+              tokenPerformanceSummary!.bestPerformers[timeframe]?.price| number: '1.6-6'
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Worst Performers</h2>
+    <div class="performance-cards">
+      <div
+        class="performance-card negative"
+        *ngFor="let timeframe of ['24h', '7d', '30d', '60d', '90d']"
+      >
+        <div class="card-header">
+          <span class="material-icons icon">trending_down</span>
+          <span class="timeframe">{{ timeframe }}</span>
+        </div>
+        <div class="card-body">
+          <div class="symbol">
+            {{ tokenPerformanceSummary!.worstPerformers[timeframe]?.symbol }}
+          </div>
+          <div class="percent">
+            {{ tokenPerformanceSummary!.worstPerformers[timeframe]?.[timeframeKeyMap[timeframe]]| number: '1.2-2'
+
+            }}%
+          </div>
+          <div class="price">
+            Price: {{ fiat }} &nbsp; {{
+              tokenPerformanceSummary!.worstPerformers[timeframe]?.price
+                | number : "1.6-6"
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4 p-4 border rounded bg-white shadow-sm">
+    <h2 class="section-title">Distribuzione per Chain</h2>
+
+    <div class="chart-legend-container">
+      <div class="chart-wrapper">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [labels]="chartOptions.labels"
+          [responsive]="chartOptions.responsive"
+          [legend]="{ show: false }"
+        ></apx-chart>
+      </div>
+
+      <div class="legend-wrapper">
+        <div
+          class="legend-item"
+          *ngFor="let chain of distributionByChain | slice : 0 : 10"
+        >
+          <span>{{ chain.chainId.toUpperCase() }}</span>
+          <strong>
+            ≈ {{ chain.valueFiat | number : "1.2-2" }} {{ fiat }}
+          </strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4 p-4 border rounded bg-white shadow-sm">
+    <h2 class="section-title">Distribuzione per Token</h2>
+
+    <div class="chart-legend-container alternate">
+      <!-- GRAFICO -->
+      <div class="chart-wrapper">
+        <apx-chart
+          [series]="chartOptionsByToken.series"
+          [chart]="chartOptionsByToken.chart"
+          [labels]="chartOptionsByToken.labels"
+          [responsive]="chartOptionsByToken.responsive"
+          [legend]="{ show: false }"
+        ></apx-chart>
+      </div>
+
+      <!-- LEGENDA CUSTOM -->
+      <div class="legend-wrapper">
+        <div
+          class="legend-item"
+          *ngFor="let token of distributionByToken | slice : 0 : 10"
+        >
+          <img
+            [src]="token.logo || 'assets/default-token.png'"
+            alt="{{ token.symbol }}"
+            width="16"
+            height="16"
+          />
+          <span>{{ token.symbol }}</span>
+          <strong>
+            ≈ {{ token.valueFiat | number : "1.2-2" }} {{ fiat }}
+          </strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>

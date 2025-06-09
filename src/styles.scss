@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@fontsource/inter/index.css';
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f5f7fa;
+}
+
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
