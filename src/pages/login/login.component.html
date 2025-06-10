@@ -19,21 +19,21 @@
       autocomplete="current-password"
     />
 
-    <button type="submit" [disabled]="isLoading">Accedi</button>
+    <button type="submit" [disabled]="isLoading">Login</button>
   </form>
 
   <button class="google-btn" (click)="loginGoogle()" [disabled]="isLoading">
-    Accedi con Google
+    Login with Google
   </button>
 
   <button class="reset-btn" (click)="resetPassword()" [disabled]="isLoading">
-    Recupera Password
+    Recover Password
   </button>
 
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
   <p class="signup-text">
-    Non sei ancora registrato?
-    <a routerLink="/signup">Registrati</a>
+   Not registered yet? 
+    <a routerLink="/signup">Sign up</a>
   </p>
 </div>

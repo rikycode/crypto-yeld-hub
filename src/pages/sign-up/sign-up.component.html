@@ -23,13 +23,13 @@
   </form>
 
   <button class="google-btn" (click)="loginGoogle()" [disabled]="isLoading">
-    Accedi con Google
+     Login with Google
   </button>
 
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
   <p class="signup-text">
-   Hai già un account?
-    <a routerLink="/login">Accedi</a>
+   Already have you an account?
+    <a routerLink="/login">Login</a>
   </p>
 </div>
